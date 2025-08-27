@@ -17,6 +17,7 @@ $res = $categorias->mostrarCategorias();
         <div class="input-container">
             <label for="categoria">Categoría</label>
             <select name="categoria" class="select">
+                <option default>- Seleccione una opción -</option>
                 <?php
                 foreach ($res as $categoria) {
                 ?>

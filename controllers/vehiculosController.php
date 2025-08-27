@@ -7,16 +7,16 @@ class VehiculosController
     public function nuevoVehiculo($data)
     {
         if (!preg_match('^\d+$^', $data['categoria'])) {
-            header('Location: ../views/modules/formularioNuevo.php?error=categoria');
+            header('Location: ../views/cargaVehiculos.php?error=categoria');
         }
         if (!preg_match('^[A-Za-zÁÉÍÓÚÑáéíóúñ]+$^', $data['marca'])) {
-            header('Location: ../views/modules/formularioNuevo.php?error=marca');
+            header('Location: ../views/cargaVehiculos.php?error=marca');
         }
         if (!preg_match('^[A-Za-zÁÉÍÓÚÑáéíóúñ0-9]+$^', $data['modelo'])) {
-            header('Location: ../views/modules/formularioNuevo.php?error=modelo');
+            header('Location: ../views/cargaVehiculos.php?error=modelo');
         }
         if (!preg_match('^[0-9]{3}[A-Za-z]{3}$^', $data['dominio'])) {
-            header('Location: ../views/modules/formularioNuevo.php?error=dominio');
+            header('Location: ../views/cargaVehiculos.php?error=dominio');
         }
         if (!isset($data['img']) || $data['img'] == null) {
             $data['img'] = $_SERVER['DOCUMENT_ROOT'] . "/crud_vehiculos/img/sin_foto.jpg";
@@ -26,5 +26,16 @@ class VehiculosController
         $vehiculo->create($data);
 
         header('Location: ../index.php?ok=vehiculo');
+    }
+
+    public function mostrarVehiculos()
+    {
+        $vehiculo = new Vehiculo;
+        return $vehiculo->get();
+    }
+    public function mostrarUnVehiculo($id)
+    {
+        $vehiculo = new Vehiculo;
+        return $vehiculo->getOne($id);
     }
 }

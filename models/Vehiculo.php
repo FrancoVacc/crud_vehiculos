@@ -14,8 +14,31 @@ class Vehiculo
 
     public function get()
     {
-        $query = "SELECT * FROM vehiculos";
+        $query = "SELECT id_vehiculos, img FROM vehiculos";
         $stmt = $this->con->prepare($query);
+        $stmt->execute();
+
+        if ($stmt->error) {
+            return ['message' => 'Error al buscar los datos'];
+        }
+
+        $res = $stmt->get_result();
+        $data_arr = [];
+
+        if ($res->num_rows > 0) {
+            while ($data = $res->fetch_assoc()) {
+                array_push($data_arr, $data);
+            }
+            return $data_arr;
+        }
+        return ['message' => 'No hay datos para mostrar'];
+    }
+
+    public function getOne($id)
+    {
+        $query = "SELECT * FROM vehiculos WHERE id_vehiculos = ? LIMIT 1";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('i', $id);
         $stmt->execute();
 
         if ($stmt->error) {

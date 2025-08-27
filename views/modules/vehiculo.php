@@ -1,3 +1,7 @@
+<?php
+// Aca seguimos mañana!!
+?>
+
 <div class="vehiculo-container">
     <div class="img-container">
         <img src="../img/sin_foto.jpg" alt="">
