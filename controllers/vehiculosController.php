@@ -38,4 +38,9 @@ class VehiculosController
         $vehiculo = new Vehiculo;
         return $vehiculo->getOne($id);
     }
+    public function eliminarVehiculo($id)
+    {
+        $vehiculo = new Vehiculo;
+        return $vehiculo->delete($id);
+    }
 }

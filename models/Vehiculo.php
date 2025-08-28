@@ -36,7 +36,7 @@ class Vehiculo
 
     public function getOne($id)
     {
-        $query = "SELECT * FROM vehiculos WHERE id_vehiculos = ? LIMIT 1";
+        $query = "SELECT marca,modelo,dominio,img,nombre_categoria as categoria FROM vehiculos JOIN categorias ON categoria = categorias.id_categoria WHERE id_vehiculos = ? LIMIT 1";
         $stmt = $this->con->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -46,13 +46,10 @@ class Vehiculo
         }
 
         $res = $stmt->get_result();
-        $data_arr = [];
+
 
         if ($res->num_rows > 0) {
-            while ($data = $res->fetch_assoc()) {
-                array_push($data_arr, $data);
-            }
-            return $data_arr;
+            return $res->fetch_assoc();
         }
         return ['message' => 'No hay datos para mostrar'];
     }
@@ -69,5 +66,19 @@ class Vehiculo
         }
 
         return ['message' => 'vehiculo creado satisfactoriamente'];
+    }
+
+    public function delete($id)
+    {
+        $query = "DELETE FROM vehiculos WHERE id_vehiculos = ?";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+
+        if ($stmt->error) {
+            return ['message' => 'Error al eliminar un vehiculo'];
+        }
+
+        return ['message' => 'vehiculo eliminado'];
     }
 }
