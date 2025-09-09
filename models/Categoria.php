@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/crud_vehiculos/settings/db.php';
+require_once __DIR__ . '/../settings/db.php';
 
 
 class Categoria

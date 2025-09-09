@@ -28,7 +28,7 @@
     grid-template-columns: 20% 80%;
 }
 
-.container > aside{
+.aside{
     grid-column-start: 1;
     background-color: #8a2be2;
     padding: 10px;

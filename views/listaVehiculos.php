@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/crud_vehiculos/controllers/vehiculosController.php';
+require_once __DIR__ . '/../controllers/vehiculosController.php';
 $vehiculos = new VehiculosController;
 $res = $vehiculos->mostrarVehiculos();
 ?>

@@ -13,7 +13,15 @@
     include '../header.php';
     ?>
     <div>
-        <?php include 'modules/formularioNuevo.php'; ?>
+        <?php
+        if (isset($_POST['id'])) {
+            include 'modules/formularioModificar.php';
+        } else {
+            include 'modules/formularioNuevo.php';
+        }
+
+
+        ?>
     </div>
 </body>
 

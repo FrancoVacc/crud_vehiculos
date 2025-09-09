@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/crud_vehiculos/settings/db.php';
+require_once __DIR__ . '/../settings/db.php';
 
 class Vehiculo
 {
@@ -66,6 +66,20 @@ class Vehiculo
         }
 
         return ['message' => 'vehiculo creado satisfactoriamente'];
+    }
+
+    public function update($data)
+    {
+        $query = "UPDATE vehiculos SET categoria = ?, marca = ?, modelo = ?, dominio = ?, img = ? WHERE id_vehiculos = ?";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('issssi', $data['categoria'], $data['marca'], $data['modelo'], $data['dominio'], $data['img'], $data['id']);
+        $stmt->execute();
+
+        if ($stmt->error) {
+            return ['message' => 'error' . $stmt->error];
+        }
+
+        return $stmt->affected_rows;
     }
 
     public function delete($id)

@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/crud_vehiculos/controllers/categoriasController.php';
+require_once __DIR__ . '/../../controllers/categoriasController.php';
 
 $categorias = new CategoriaController;
 $res = $categorias->mostrarCategorias();

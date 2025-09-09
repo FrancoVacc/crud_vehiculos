@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/crud_vehiculos/controllers/vehiculosController.php';
+require_once __DIR__ . '/../../controllers/vehiculosController.php';
 
 $id = isset($_GET['id']) ? $_GET['id'] : null;
 
@@ -21,8 +21,8 @@ $res = $vehiculo->mostrarUnVehiculo($id);
         <p><b>Marca:</b> <?= $res['marca'] ?> </p>
         <p><b>Modelo:</b> <?= $res['modelo'] ?> </p>
         <p><b>Dominio:</b> <?= $res['dominio'] ?> </p>
-        <div>
-            <form action="" method="post">
+        <div class="btn-container">
+            <form action="cargaVehiculos.php" method="post">
                 <input type="hidden" name="id" value="<?= $id ?>">
                 <input type="submit" value="Modificar" class="btn">
             </form>
@@ -30,9 +30,9 @@ $res = $vehiculo->mostrarUnVehiculo($id);
                 <input type="hidden" name="id" value="<?= $id ?>">
                 <input type="submit" value="Eliminar" class="btn">
             </form>
-        </div>
-        <div class="btn-container">
-            <a href="../index.php" class="btn volver">Volver</a>
+            <div class="btn-container">
+                <a href="../index.php" class="btn volver">Volver</a>
+            </div>
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/crud_vehiculos/models/Categoria.php';
+require_once __DIR__ . '/../models/Categoria.php';
 
 class CategoriaController
 {
