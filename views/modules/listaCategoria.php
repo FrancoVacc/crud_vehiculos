@@ -11,10 +11,11 @@ $res = $categorias->mostrarCategorias();
     <?php
     foreach ($res as $item) {
     ?>
-        <li><a href="#"><?= strtoupper($item['nombre_categoria']) ?></a></li>
+        <li><a href="?type=<?= $item['id_categoria'] ?>"><?= strtoupper($item['nombre_categoria']) ?></a></li>
     <?php
     }
     ?>
+    <li><a href="index.php">Todos los Vehículos</a></li>
 </ul>
 <div class="btn-container">
     <a href="views/cargaVehiculos.php" class="btn">Nuevo</a>

@@ -12,10 +12,25 @@ class Vehiculo
         $this->con = $db->connect();
     }
 
-    public function get()
+    public function get($types = null, $params = null)
     {
         $query = "SELECT id_vehiculos, img FROM vehiculos";
-        $stmt = $this->con->prepare($query);
+        switch ($types) {
+            case 'categoria':
+                $query .= " WHERE categoria = ?";
+                $stmt = $this->con->prepare($query);
+                $stmt->bind_param('i', $params);
+                break;
+            case 'dominio':
+                $query .= " WHERE dominio = ? LIMIT 1";
+                $stmt = $this->con->prepare($query);
+                $stmt->bind_param('s', $params);
+                break;
+            default:
+                $stmt = $this->con->prepare($query);
+                break;
+        }
+
         $stmt->execute();
 
         if ($stmt->error) {
@@ -31,7 +46,7 @@ class Vehiculo
             }
             return $data_arr;
         }
-        return ['message' => 'No hay datos para mostrar'];
+        return; //['message' => 'No hay datos para mostrar'];
     }
 
     public function getOne($id)

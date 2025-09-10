@@ -31,10 +31,10 @@ class VehiculosController
 
         header('Location: ../index.php?ok=vehiculo');
     }
-    public function mostrarVehiculos()
+    public function mostrarVehiculos($types = null, $params = null)
     {
         $vehiculo = new Vehiculo;
-        return $vehiculo->get();
+        return $vehiculo->get($types, $params);
     }
     public function mostrarUnVehiculo($id)
     {
