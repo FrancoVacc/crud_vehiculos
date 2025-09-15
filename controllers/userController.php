@@ -50,4 +50,24 @@ class UserController
             exit;
         }
     }
+
+    public function cambiarPass($pass, $repass)
+    {
+        if ($pass != $repass) {
+            header('Location: ../index.php?error=password');
+            exit;
+        }
+
+        if (!preg_match('/^(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\|;:,.<>\/?])[A-Za-z\d!@#$%^&*()_\-+={}[\]\|;:,.<>\/?]{8,}$/', $pass)) {
+            header('Location: ../index.php?error=password');
+            exit;
+        }
+        $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
+
+        $data['password'] = $pass_hash;
+        $data['id'] = $_SESSION['id'];
+
+        $usuario = new Usuarios;
+        return $usuario->update($data);
+    }
 }

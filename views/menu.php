@@ -7,7 +7,7 @@
             <a href="views/cambiarPass.php">Cambiar Contraseña</a>
         </li>
         <li>
-            <a href="">Cerrar Sesión</a>
+            <a href="router/cerrarSesion.php">Cerrar Sesión</a>
         </li>
     </ul>
 </div>

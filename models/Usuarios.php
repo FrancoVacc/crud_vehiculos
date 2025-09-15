@@ -57,4 +57,18 @@ class Usuarios
 
         return ['message' => 'No hay datos para mostrar'];
     }
+
+    public function update($data)
+    {
+        $query = 'UPDATE usuarios SET password = ? WHERE id_usuario = ?';
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('si', $data['password'], $data['id']);
+        $stmt->execute();
+
+        if ($stmt->error) {
+            return ['message' => 'Error al editar la contraseña'];
+        }
+
+        return $stmt->affected_rows;
+    }
 }

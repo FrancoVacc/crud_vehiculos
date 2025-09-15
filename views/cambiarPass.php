@@ -19,6 +19,7 @@
 
         ?>
     </div>
+    <script src="../js/cambiarPass.js"></script>
 </body>
 
 </html>
