@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../../controllers/vehiculosController.php';
 
 $id = isset($_GET['id']) ? $_GET['id'] : null;
@@ -22,14 +23,20 @@ $res = $vehiculo->mostrarUnVehiculo($id);
         <p><b>Modelo:</b> <?= $res['modelo'] ?> </p>
         <p><b>Dominio:</b> <?= $res['dominio'] ?> </p>
         <div class="btn-container">
-            <form action="cargaVehiculos.php" method="post">
-                <input type="hidden" name="id" value="<?= $id ?>">
-                <input type="submit" value="Modificar" class="btn">
-            </form>
-            <form action="../router/eliminarVehiculo.php" method="post">
-                <input type="hidden" name="id" value="<?= $id ?>">
-                <input type="submit" value="Eliminar" class="btn">
-            </form>
+            <?php
+            if (isset($_SESSION['id'])) {
+            ?>
+                <form action="cargaVehiculos.php" method="post">
+                    <input type="hidden" name="id" value="<?= $id ?>">
+                    <input type="submit" value="Modificar" class="btn">
+                </form>
+                <form action="../router/eliminarVehiculo.php" method="post">
+                    <input type="hidden" name="id" value="<?= $id ?>">
+                    <input type="submit" value="Eliminar" class="btn">
+                </form>
+            <?php
+            }
+            ?>
             <div class="btn-container">
                 <a href="../index.php" class="btn volver">Volver</a>
             </div>

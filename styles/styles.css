@@ -9,7 +9,8 @@
     padding: 20px;
     background-color: #8a2be2;
     color: #fff;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .buscador{
@@ -24,12 +25,15 @@
 }
 
 .container{
-    display: grid;
-    grid-template-columns: 20% 80%;
+    /*display: grid;
+    grid-template-columns: 20% 80%;*/
+    display: flex;
 }
 
 .aside{
-    grid-column-start: 1;
+    /* grid-column-start: 1; */
+    width: 20%;
+    height: 100dvh;
     background-color: #8a2be2;
     padding: 10px;
     text-align: center;
@@ -45,13 +49,15 @@
 }
 
 .vehiculos{
-    grid-column-start: 2;
+    /* grid-column-start: 2; */
+    width: 80%;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
 }
 
 .card{
+    max-height: 270px;
     padding: 10px;
     border-radius: 5%;
     background-color: #e0e0e0;
@@ -74,9 +80,16 @@
     background-color: #8a2be2;
     border-radius: 5%;
 }
-
+.btn-header{
+    background-color: #fff;
+    color: #8a2be2;
+}
 .btn:hover{
     background-color: #3d0e69;
+}
+.btn-header:hover{
+    background-color: #cac8c8;
+    color: #3d0e69;
 }
 
 .btn-container > a{
@@ -95,7 +108,17 @@
     border-radius: 5px;
 }
 
-.form-container > h2{
+.form-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.form-title > button {
+    height: 30px;
+    width: 30px;
+}
+.form-title > h2{
     margin: 10px 0;
 }
 
@@ -168,4 +191,52 @@
     border-left: 1px solid #008000;
     color: #fff;
     background-color: #6cfb628e;
+}
+.modal{
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000a7;
+}
+.modal-active{
+    display: block;
+    position: fixed;
+}
+.sesion{
+    width: 30%;
+    margin-top: 150px;
+    display: none;
+}
+.sesion-active{
+    display: block;
+}
+
+.menu-container{
+    width: 30%;
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #8a2be2;
+    padding:20px;
+    height: 40%;
+}
+.menu-active{
+    display: block;
+}
+.menu-container > ul {
+    list-style: none;
+}
+.menu-container > ul > li{
+    margin: 10px 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.menu-container > ul > li > a,.menu-container >ul > li> p {
+    color: #fff;
+    text-decoration: none;
+}
+.menu-container > ul > li > a:hover{
+    border-bottom: 1px solid #fff;
 }

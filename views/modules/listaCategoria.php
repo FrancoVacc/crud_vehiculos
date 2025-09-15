@@ -17,6 +17,13 @@ $res = $categorias->mostrarCategorias();
     ?>
     <li><a href="index.php">Todos los Vehículos</a></li>
 </ul>
-<div class="btn-container">
-    <a href="views/cargaVehiculos.php" class="btn">Nuevo</a>
-</div>
+<?php
+if (isset($_SESSION['id'])) {
+?>
+    <div class="btn-container">
+        <a href="views/cargaVehiculos.php" class="btn">Nuevo</a>
+    </div>
+<?php
+}
+
+?>

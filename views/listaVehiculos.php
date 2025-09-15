@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once __DIR__ . '/../controllers/vehiculosController.php';
 require_once __DIR__ . '/../router/buscarVehiculo.php';
 $vehiculos = new VehiculosController;
@@ -33,7 +32,7 @@ if (isset($_GET['dominio'])) {
             ?><?php
             } else {
                 ?>
-            <p><i><b>No hay vehiculos con esta categoría</b></i></p>
+            <p><i><b>No hay vehiculos disponibles</b></i></p>
         <?php
             } ?>
 

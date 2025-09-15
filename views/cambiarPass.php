@@ -10,10 +10,15 @@
 
 <body>
     <?php
-    include '../header2.php';
-    include 'modules/vehiculo.php';
-
+    include '../header.php';
     ?>
+    <div>
+        <?php
+        include 'modules/cambiarPassForm.php';
+
+
+        ?>
+    </div>
 </body>
 
 </html>
